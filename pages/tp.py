@@ -40,6 +40,7 @@ query = '?s='
 st.title("td test")
 
 
+col1, col2 = st.columns(2)
 
 articles = []
 with st.form('Form 1'):
@@ -48,9 +49,11 @@ with st.form('Form 1'):
         response = requests.get(url+query+search)
         soup = BeautifulSoup(response.content, 'html.parser')
         articles = soup.find_all('article')
-        st.write(scraping_bdm(articles))
+        with col1:
+            st.write(scraping_bdm(articles))
         df = st.write(pd.DataFrame(article_dict).T)
-        st.write(df)
+        with col2:
+            st.write(df)
 
 df = pd.DataFrame(article_dict)
 
