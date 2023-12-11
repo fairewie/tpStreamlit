@@ -1,6 +1,7 @@
+jsons
 requests
 pandas
 streamlit
-plotly.express
-BeautifulSoup
-matplotlib.pyplot
+plotly
+bs4
+matplotlib
