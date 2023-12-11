@@ -40,24 +40,44 @@ query = '?s='
 
 
 
-st.toggle("Toggle button")
+on = st.toggle('Theme sombre', False)
+if on:
+    st.markdown("""
+    <style>
+    body {
+        background-color: #1a1a1a;
+        color: white;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+else:
+    st.markdown("""
+    <style>
+    body {
+        background-color: white;
+        color: black;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 st.title("td test")
 
 
-col1, col2 = st.columns(2)
-
+nb_page = st.slider('Nombre de page', 1, 15)
 articles = []
 with st.form('Form 1'):
     search = st.text_input('Recherche')
     if st.form_submit_button('Rechercher'):
-        response = requests.get(url+query+search)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        articles = soup.find_all('article')
-        with col1:
-            st.write(scraping_bdm(articles))
+        for i in range(int(nb_page)):
+            response = requests.get(url+query+search+'&page='+str(i))
+            soup = BeautifulSoup(response.content, 'html.parser')
+            articles += soup.find_all('article')
+        # response = requests.get(url+query+search)
+        # soup = BeautifulSoup(response.content, 'html.parser')
+        # articles = soup.find_all('article')
+        st.write(scraping_bdm(articles))
         df = st.write(pd.DataFrame(article_dict).T)
-        with col2:
-            st.write(df)
+        st.write(df)
 
 df = pd.DataFrame(article_dict)
 
