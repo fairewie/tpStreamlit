@@ -37,6 +37,10 @@ def scraping_bdm(articles):
 url = 'https://www.blogdumoderateur.com/'
 
 query = '?s='
+
+
+
+st.toggle("Toggle button")
 st.title("td test")
 
 
