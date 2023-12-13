@@ -8,15 +8,12 @@ class AllocineSpider(scrapy.Spider):
     allowed_domains = ["www.allocine.fr"]
     start_urls = ["https://www.allocine.fr/film/meilleurs"]
 
-
     def start_requests(self):
         for url in self.start_urls:
             yield Request(url=url, callback=self.parse_allocine)
 
-
     def parse_allocine(self, response):
         liste_film = list_films = response.css('li.mdl')
-
 
         # Boucle qui parcours l'ensemble des éléments de la liste des films
         for film in liste_film:
@@ -30,9 +27,9 @@ class AllocineSpider(scrapy.Spider):
 
             # Lien de l'image du film
             try:
-                item['img'] = list_films.css('img::attr(src)')[0].get()
+                item['image'] = list_films.css('img::attr(src)')[0].get()
             except:
-                item['img'] = 'None'
+                item['image'] = 'None'
 
 
             # Auteur du film

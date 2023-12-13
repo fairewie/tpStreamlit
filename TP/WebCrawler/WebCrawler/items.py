@@ -6,14 +6,21 @@
 import scrapy
 
 class ReviewsAllocineItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
     title = scrapy.Field()
     image = scrapy.Field()
-    autor = scrapy.Field()
+    author = scrapy.Field()
     time = scrapy.Field()
     genre = scrapy.Field()
     score = scrapy.Field()
     desc = scrapy.Field()
-    release_date = scrapy.Field()
+    release = scrapy.Field()
     page = scrapy.Field()
+
+class ReviewsBoursorama(scrapy.Item):
+    indice = scrapy.Field()
+    cours = scrapy.Field()
+    var = scrapy.Field()
+    high = scrapy.Field()
+    low = scrapy.Field()
+    open_ = scrapy.Field()
+    time = scrapy.Field()
