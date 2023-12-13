@@ -24,3 +24,9 @@ class ReviewsBoursorama(scrapy.Item):
     low = scrapy.Field()
     open_ = scrapy.Field()
     time = scrapy.Field()
+    
+class ReviewManga(scrapy.Item):
+    nom = scrapy.Field()
+    image = scrapy.Field()
+    description = scrapy.Field()
+    lettre = scrapy.Field()

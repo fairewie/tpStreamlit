@@ -36,6 +36,12 @@ def square(n):
     return {n: int(n)**2}
 
 
+@app.get('/anime', tags=['TEST'])
+def anime(lettre: str):
+    return {"anime avec la lettre": lettre}
+
+
+
 if __name__ == '__main__':
     uvicorn.run(app=app, 
                 host='localhost',
