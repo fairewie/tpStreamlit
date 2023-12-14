@@ -14,7 +14,7 @@ class MangaSpider(scrapy.Spider):
 
     database = DataBase('database')
     try:
-        database.create_table('anime',
+        database.create_table('animes',
                                    nom = db.String,
                                    image = db.String,
                                    description  = db.String,
@@ -28,7 +28,7 @@ class MangaSpider(scrapy.Spider):
             url = f"https://myanimelist.net/manga.php?letter={letter}"
             yield Request(url=url, callback=self.parse_manga, meta={'lettre': letter})
 
-    def parse_boursorama(self, response):
+    def parse_manga(self, response):
         lettre = response.meta['lettre']
         liste_manga = response.css('tr')[8:]
         for manga in liste_manga:
@@ -57,9 +57,10 @@ class MangaSpider(scrapy.Spider):
             except:
                 item['lettre'] = 'None'
 
-            # self.database.add_row('boursorama', 
-            #                        indice = item['nom'],
-            #                        cours = item['image'],
-            #                        var  = item['description'],
-            # )
+            self.database.add_row('animes', 
+                                   nom = item['nom'],
+                                   image = item['image'],
+                                   description  = item['description'],
+                                   lettre  = item['lettre'],
+            )
             yield item

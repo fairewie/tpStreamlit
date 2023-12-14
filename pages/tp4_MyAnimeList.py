@@ -16,10 +16,12 @@ st.write("Saisir une lettre pour afficher les animes commençant par cette lettr
 lettre_selectionnee = st.selectbox("Sélectionnez une lettre", lettres_alphabet)
 
 
-with st.form('Form 1'):
-    if st.form_submit_button('Rechercher'):
-        st.write(f"Lettre sélectionnée : {lettre_selectionnee}")
-        #fetch api avec la lettre
-        api_url = f"http://localhost:8000/anime?lettre={lettre_selectionnee}"
-        response = requests.get(api_url)
-        st.write(response.json())
+
+st.markdown(
+    """
+    # MyAnimeList
+    
+    <iframe src="http://localhost:8000/docs#" width="800" height="600"></iframe>
+    """,
+    unsafe_allow_html=True,
+)
