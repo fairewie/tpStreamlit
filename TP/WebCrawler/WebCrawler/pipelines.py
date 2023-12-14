@@ -62,3 +62,4 @@ class DataBase():
         name_table = self.read_table(name_table)
         stm = db.select([name_table])
         return self.connection.execute(stm).fetchall()
+    
