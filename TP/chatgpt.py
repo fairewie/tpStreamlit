@@ -28,7 +28,7 @@ class TEST:
                 {"role": "system",
                 "content": f"resume moi le texte suivant: '{self}' Tu fais des liaisons entre les articles avec des mots tel que 'mais', 'donc', 'or', 'par contre', 'en revanche', 'en effet', 'cependant', 'toutefois', 'par ailleurs', 'par contre', 'par contre, 'enfin'"},
                 {"role": "user",
-                "content": "Voici la liste des actualités à synthétiser :" + actu},
+                "content": "Voici la liste des actualités à synthétiser :" + self},
             ],
             max_tokens=100,
             temperature=0.9,
@@ -48,7 +48,7 @@ class TEST:
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system",
-                "content": f"Tu es un rédacteur web qui synthétise l'actualité en 50 mots sur la thématique '{query}' Tu fais des liaisons entre les articles avec des mots tel que 'mais', 'donc', 'or', 'par contre', 'en revanche', 'en effet', 'cependant', 'toutefois', 'par ailleurs', 'par contre', 'par contre, 'enfin'"},
+                "content": f"Tu es un rédacteur web qui synthétise l'actualité en 50 mots sur la thématique '{self}' Tu fais des liaisons entre les articles avec des mots tel que 'mais', 'donc', 'or', 'par contre', 'en revanche', 'en effet', 'cependant', 'toutefois', 'par ailleurs', 'par contre', 'par contre, 'enfin'"},
                 {"role": "user",
                 "content": "Voici la liste des actualités à synthétiser :" + actu},
             ],

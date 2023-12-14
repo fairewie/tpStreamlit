@@ -104,7 +104,7 @@ def square(n):
 
 @app.get('/anime', tags=['TEST'])
 def animes(lettre: str, db: DataBase = Depends(get_db)):
-    animes = db.select_table("anime")
+    animes = db.select_table("animes")
     filtered_animes = [anime for anime in animes if anime.lettre == lettre]
 
     # Return selected attributes for each anime
